@@ -11,7 +11,7 @@ git clone https://github.com/mauricegift/brat-api && cd brat-api
 ```bash
 python -m playwright install chromium
 ```
-- You might need to install dependencies and maybe activate your virtual environment _venv_
+- You may need to install chromium dependencies and maybe activate your virtual environment _venv_
   - ```bash
     sudo apt install python3-venv
     ```
