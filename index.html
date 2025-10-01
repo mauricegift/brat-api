@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gifted | BRAT Generator API</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .endpoint {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        .endpoint h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .method {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .url {
+            font-family: 'Courier New', monospace;
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            display: block;
+            word-break: break-all;
+        }
+        
+        .param {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .param strong {
+            color: #e74c3c;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+        
+        .btn-success:hover {
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+        }
+        
+        .btn-warning:hover {
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
+        }
+        
+        .example {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #2c3e50;
+            color: #ecf0f1;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎨 BRAT Generator API</h1>
+            <p>Transform your text into stunning BRAT-style images and animated videos</p>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>🚀 Quick Start</h2>
+                <p>Use the buttons below to test the API endpoints with sample text:</p>
+                
+                <div class="buttons">
+                    <a href="/api/brat?text=Gifted Tech" class="btn" target="_blank">
+                        Generate BRAT Image
+                    </a>
+                    <a href="/api/bratvid?text=Gifted Tech Awesome" class="btn btn-success" target="_blank">
+                        Generate BRAT Video
+                    </a>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>📚 API Documentation</h2>
+                
+                <div class="endpoint">
+                    <h3><span class="method">GET</span> Generate BRAT Image</h3>
+                    <code class="url">/api/brat?text=Your+Text+Here&amp;background=#000000&amp;color=#FFFFFF</code>
+                    
+                    <div class="param">
+                        <strong>text</strong> (required) - The text to display in the BRAT image
+                    </div>
+                    <div class="param">
+                        <strong>background</strong> (optional) - Background color in hex format (e.g., #000000)
+                    </div>
+                    <div class="param">
+                        <strong>color</strong> (optional) - Text color in hex format (e.g., #FFFFFF)
+                    </div>
+                    
+                    <div class="example">
+                        <strong>Example:</strong><br>
+                        <code>/api/brat?text=Hello+World&amp;background=%23000000&amp;color=%23FFFFFF</code>
+                    </div>
+                </div>
+                
+                <div class="endpoint">
+                    <h3><span class="method">GET</span> Generate BRAT Video</h3>
+                    <code class="url">/api/bratvid?text=Your+Text+Here&amp;background=#000000&amp;color=#FFFFFF</code>
+                    
+                    <div class="param">
+                        <strong>text</strong> (required) - The text to animate (words separated by spaces)
+                    </div>
+                    <div class="param">
+                        <strong>background</strong> (optional) - Background color in hex format
+                    </div>
+                    <div class="param">
+                        <strong>color</strong> (optional) - Text color in hex format
+                    </div>
+                    
+                    <div class="example">
+                        <strong>Example:</strong><br>
+                        <code>/api/bratvid?text=This+is+awesome&amp;background=%23000000&amp;color=%23FF0000</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>🛠️ Usage Examples</h2>
+                
+                <div class="buttons">
+                    <a href="/api/brat?text=Welcome+Home" class="btn btn-warning" target="_blank">
+                        Test: Welcome Home
+                    </a>
+                    <a href="/api/brat?text=Gold+Texr&background=%23000000&color=%23FFD700" class="btn btn-warning" target="_blank">
+                        Test: Gold Text
+                    </a>
+                    <a href="/api/bratvid?text=Create+Amazing+Content" class="btn btn-warning" target="_blank">
+                        Test: Amazing Content Video
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Brat Gen API &copy; 2025 | Gifted Tech</p>
+        </div>
+    </div>
+</body>
+</html>
