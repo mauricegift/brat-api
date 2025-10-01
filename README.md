@@ -35,5 +35,9 @@ python -m playwright install chromium
 ```bash
 python run.py
 ```
+- If using pm2, then:
+  - ```bash
+    pm2 start "python run.py" --name bratapi
+    ```
 
 - Visit **[http://localhost:2460](http://localhost:2460)** from your browser
